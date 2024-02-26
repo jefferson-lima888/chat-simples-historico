@@ -8,7 +8,15 @@ type AddAction = {
   };
 };
 
-type ChatActions = AddAction;
+type clearAction = {
+  type: "clear";
+  payload: {
+    user: string;
+    text: string;
+  };
+};
+
+type ChatActions = AddAction | clearAction;
 
 export const chatReducer = (state: Message[], action: ChatActions) => {
   switch (action.type) {
@@ -21,6 +29,8 @@ export const chatReducer = (state: Message[], action: ChatActions) => {
           text: action.payload.text,
         },
       ];
+    // case "clear":
+    //   return { ...state, user: "", text: "" };
     default:
       return state;
   }

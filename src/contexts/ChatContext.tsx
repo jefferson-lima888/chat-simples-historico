@@ -33,4 +33,4 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useUser = () => useContext(ChatContext);
+export const useChat = () => useContext(ChatContext);
