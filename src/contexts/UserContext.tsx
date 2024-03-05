@@ -5,7 +5,9 @@ type UserContext = {
   setUser: (newUser: string) => void;
 };
 
-export const UserContext = createContext<UserContext | null>(null);
+const initialState: UserContext = { user: "", setUser: () => {} };
+
+export const UserContext = createContext<UserContext>(initialState);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState("");

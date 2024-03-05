@@ -2,20 +2,19 @@ import { useUser } from "@/contexts/UserContext";
 import { NameInput } from "./NameInput";
 import { ChatInput } from "./ChatInput";
 import { ChatMessages } from "./ChatMessages";
+import { useChat } from "@/contexts/ChatContext";
 
 export const Chat = () => {
   const userCtx = useUser();
+  const chatCtx = useChat();
+  const { setUser } = useUser();
 
   if (!userCtx) return null;
   if (!userCtx.user) return <NameInput />;
 
-  console.log("user", !userCtx);
-  console.log("userUser", !userCtx.user);
-  console.log("userHome", userCtx);
-
   const handleClear = () => {
-    console.log("clear", !!userCtx.user);
-    location.reload();
+    chatCtx?.clearMessage();
+    setUser("");
   };
 
   return (

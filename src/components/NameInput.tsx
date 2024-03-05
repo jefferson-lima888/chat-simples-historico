@@ -11,8 +11,6 @@ export const NameInput = () => {
         useCtx?.setUser(nameInput.trim());
       }
     }
-    console.log("nAME", useCtx?.user);
-    console.log("USEctx", useCtx);
   };
 
   return (

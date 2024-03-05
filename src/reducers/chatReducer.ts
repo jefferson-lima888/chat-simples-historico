@@ -13,10 +13,11 @@ type clearAction = {
   payload: {
     user: string;
     text: string;
+    // id: number;
   };
 };
 
-type ChatActions = AddAction | clearAction;
+export type ChatActions = AddAction | clearAction;
 
 export const chatReducer = (state: Message[], action: ChatActions) => {
   switch (action.type) {
@@ -29,8 +30,9 @@ export const chatReducer = (state: Message[], action: ChatActions) => {
           text: action.payload.text,
         },
       ];
-    // case "clear":
-    //   return { ...state, user: "", text: "" };
+    case "clear":
+      return { ...state, user: "", text: "" };
+    // return state.filter((s) => s.id !== action.payload.id);
     default:
       return state;
   }
